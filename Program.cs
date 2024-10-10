@@ -14,6 +14,8 @@ builder.Services.AddSqlite<StudentInfoStudentContext>(connString);
 var app = builder.Build(); // Build the SQLite DB
 
 app.MapStudentsEndpoints(); // All HTTP requests now process in another class
+app.MapAccountsEndpoints();
+app.MapCoursesEndpoints();
 
 app.MapGet("/", () => "Hello World!");
 

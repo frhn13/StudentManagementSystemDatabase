@@ -42,7 +42,7 @@ namespace StudentDatabaseServer.Endpoints
                 if (existingStudent is null)
                     return Results.NotFound();
 
-                dbContext.Entry(existingStudent).CurrentValues.SetValues(updatedStudent.ToModel(id));
+                dbContext.Entry(existingStudent).CurrentValues.SetValues(updatedStudent.ToStudentModel(id));
                 await dbContext.SaveChangesAsync();
 
                 return Results.NoContent();

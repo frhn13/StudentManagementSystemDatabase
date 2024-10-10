@@ -1,6 +1,6 @@
 ﻿namespace StudentDatabaseServer.Dtos
 {
-    public record class StudentPutDto (
+    public record class StudentPutDto(
         string Name,
         int Age,
         int Year,

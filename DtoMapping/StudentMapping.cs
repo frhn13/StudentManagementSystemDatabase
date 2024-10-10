@@ -16,7 +16,7 @@ namespace StudentDatabaseServer.DtoMapping
                 student.DOB
                 );
         }
-        public static Student ToModel(this StudentPutDto updatedStudent, int id) 
+        public static Student ToStudentModel(this StudentPutDto updatedStudent, int id) 
         {
             return new Student()
             {
