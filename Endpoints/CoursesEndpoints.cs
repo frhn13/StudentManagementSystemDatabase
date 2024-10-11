@@ -19,11 +19,11 @@ namespace StudentDatabaseServer.Endpoints
             await dbContext.CourseDetailsDB.Select(course => course.ToCourseGetDto()).AsNoTracking().ToListAsync());
 
             // GET /courses/{id}
-            group.MapGet("/{id}", async (int id, StudentInfoStudentContext dbContext) => // Starts with "students" in the endpoint, the id is just added onto that
+            group.MapGet("/{id}", async (int id, StudentInfoStudentContext dbContext) => // Starts with "courses" in the endpoint, the id is just added onto that
             {
-                CourseDetails? course = await dbContext.CourseDetailsDB.FindAsync(id); // Returns specific student
-                return course is null ? Results.NotFound() : Results.Ok(course.ToCourseGetDto()); // Returns result not found if no student found to be displayed
-            }).WithName(GetCourseEndpointName); // Find route of endpoint, to find student request is looking for
+                CourseDetails? course = await dbContext.CourseDetailsDB.FindAsync(id); // Returns specific course
+                return course is null ? Results.NotFound() : Results.Ok(course.ToCourseGetDto()); // Returns result not found if no course found to be displayed
+            }).WithName(GetCourseEndpointName); // Find route of endpoint, to find course request is looking for
 
             //Get /courses from certain user
             group.MapGet("/userCourses/{name}", async (string name, StudentInfoStudentContext dbContext) =>
@@ -67,6 +67,7 @@ namespace StudentDatabaseServer.Endpoints
                 await dbContext.CourseDetailsDB.Where(course => course.Name!.Equals(name)).ExecuteDeleteAsync();
                 return Results.NoContent();
             });
+
             return group;
         }
     }

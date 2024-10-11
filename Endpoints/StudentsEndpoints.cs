@@ -24,7 +24,13 @@ namespace StudentDatabaseServer.Endpoints
                 Student? student = await dbContext.Students.FindAsync(id); // Returns specific student
                 return student is null ? Results.NotFound() : Results.Ok(student.ToStudentGetDto()); // Returns result not found if no student found to be displayed
             }).WithName(GetStudentEndpointName); // Find route of endpoint, to find student request is looking for
-                                                 
+
+            //Get /student for certain user
+            group.MapGet("/student/{name}", async (string name, StudentInfoStudentContext dbContext) =>
+            {
+                var student = await dbContext.CourseDetailsDB.FromSql($"SELECT * From Students WHERE name = {name}").FirstAsync(); // SQL code to find the right account
+                return student;
+            });
 
             // POST /students
             group.MapPost("/", async (Student newStudent, StudentInfoStudentContext dbContext) =>
