@@ -25,10 +25,10 @@ namespace StudentDatabaseServer.Endpoints
             }).WithName(GetAccountEndpointName); // Find route of endpoint, to find account request is looking for
 
             //Get /account for certain user
-            group.MapGet("/userAccount/{name}/{username}", async (string name, string username, StudentInfoStudentContext dbContext) =>
+            group.MapGet("/userAccount/{username}", async (string username, StudentInfoStudentContext dbContext) =>
             {
                 Account? account = await dbContext.Accounts.
-                FromSql($"SELECT * From Accounts WHERE name = {name} OR username = {username}").FirstAsync(); // SQL code to find the right account
+                FromSql($"SELECT * From Accounts WHERE username = {username}").FirstAsync(); // SQL code to find the right account
                 return account is null ? Results.NotFound() : Results.Ok(account.ToAccountGetDto());
             });
 

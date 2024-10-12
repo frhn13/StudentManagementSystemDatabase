@@ -13,14 +13,14 @@ POST http://localhost:5098/courses
 Content-Type: application/json 
 
 {
-  "name": "Tobias",
-  "course": "15",
-  "module": "10",
-  "semester": 3
+  "name": "John Smith",
+  "course": "Computing",
+  "module": "Human Computer Interaction",
+  "semester": 2
 }
 
 ###
-PUT http://localhost:5098/courses/2
+PUT http://localhost:5098/courses/3
 Content-Type: application/json 
 
 {
