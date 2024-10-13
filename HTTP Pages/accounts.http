@@ -6,7 +6,7 @@ GET http://localhost:5098/accounts
 GET http://localhost:5098/accounts/1
 
 ###
-GET http://localhost:5098/accounts/userAccount/John/Johnny123
+GET http://localhost:5098/accounts/userAccount/John123/123456
 
 ###
 POST http://localhost:5098/accounts
